@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="forms\Autentificare_client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\Creare_cont_client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="mockups\MockupOptiuni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="mockups\MockupAutentificare_client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="mockups\MockupCreare_cont_client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="mockups\MockupStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\Start.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="forms\Optiuni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

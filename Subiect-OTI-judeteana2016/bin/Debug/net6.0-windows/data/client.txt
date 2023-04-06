@@ -1,0 +1,5 @@
+1,parola,gusteritan,ovidiu,str libertatii,ovidiugusteritan@gmail.com,240
+2,parola,mihai,alex,str albastra,email@gmail.com,300
+3,asdasd,asasdasd,asda,sdasd,sad,0
+4,ceva,sadasd,asdasd,ceva,ceva,0
+5,asd,sad,asd,asd,asd,0
