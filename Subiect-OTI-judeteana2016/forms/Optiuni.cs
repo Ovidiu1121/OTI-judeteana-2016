@@ -27,11 +27,18 @@ namespace Subiect_OTI_judeteana2016
         private Label lblnecesarzilnic2;
         private Label lbltoalkcal;
         private Label lblprettotal;
-        private TextBox txtnecesarzilnic2;
-        private TextBox txttoalkcal;
-        private TextBox txtprettotal;
+        private Label lblnecesarzilnic2Val;
+        private Label lbltoalkcalVal;
+        private Label lblprettotalVal;
         private Button btncomanda;
-
+        private DataGridViewButtonColumn btnadauga;
+        private Label lblnecesarzilnickcal;
+        private Label lblbuget;
+        private Label lblmeniurioptime;
+        private TextBox txtnecesarzilnickcal;
+        private TextBox txtbuget;
+        private Button btngenereaza;
+        private DataGridView datagridview2;
 
         public Optiuni()
         {
@@ -42,7 +49,7 @@ namespace Subiect_OTI_judeteana2016
             this.tabcontrol=new TabControl();
             this.Controls.Add(this.tabcontrol);
             this.tabcontrol.Location = new System.Drawing.Point(0, 0);
-            this.tabcontrol.Size = new System.Drawing.Size(983, 534);
+            this.tabcontrol.Size = new System.Drawing.Size(1040, 534);
 
             TabPage tab1 = new TabPage("CalculatorKcal");
             TabPage tab2 = new TabPage("Comanda");
@@ -105,8 +112,17 @@ namespace Subiect_OTI_judeteana2016
             this.datagridview1=new DataGridView();
             tab2.Controls.Add(this.datagridview1);
             this.datagridview1.Location = new System.Drawing.Point(6, 0);
-            this.datagridview1.Size=new Size(1031, 367);
+            this.datagridview1.Size=new Size(1030, 367);
             populate();
+
+            DataGridViewColumn col = this.datagridview1.Columns["Id produs"];
+            col.Width = 80; 
+
+            this.btnadauga=new DataGridViewButtonColumn();
+            this.datagridview1.Columns.Add(this.btnadauga);
+            this.btnadauga.Text="Adauga";
+            this.btnadauga.HeaderText="Adauga";
+            this.btnadauga.UseColumnTextForButtonValue=true;
 
             this.lblnecesarzilnic2=new Label();
             tab2.Controls.Add(this.lblnecesarzilnic2);
@@ -126,23 +142,22 @@ namespace Subiect_OTI_judeteana2016
             this.lblprettotal.Size=new System.Drawing.Size(100, 20);
             this.lblprettotal.Text="Pret total";
 
-            this.txtnecesarzilnic2=new TextBox();
-            tab2.Controls.Add(this.txtnecesarzilnic2);
-            this.txtnecesarzilnic2.Location = new System.Drawing.Point(186, 372);
-            this.txtnecesarzilnic2.Size = new System.Drawing.Size(124, 27);
-            this.txtnecesarzilnic2.Enabled=false;
+            this.lblnecesarzilnic2Val=new Label();
+            tab2.Controls.Add(this.lblnecesarzilnic2Val);
+            this.lblnecesarzilnic2Val.Location = new System.Drawing.Point(186, 372);
+            this.lblnecesarzilnic2Val.Size = new System.Drawing.Size(124, 27);
 
-            this.txttoalkcal=new TextBox();
-            tab2.Controls.Add(this.txttoalkcal);
-            this.txttoalkcal.Location = new System.Drawing.Point(186, 414);
-            this.txttoalkcal.Size = new System.Drawing.Size(124, 27);
-            this.txttoalkcal.Enabled=false;
+            this.lbltoalkcalVal=new Label();
+            tab2.Controls.Add(this.lbltoalkcalVal);
+            this.lbltoalkcalVal.Location = new System.Drawing.Point(186, 414);
+            this.lbltoalkcalVal.Size = new System.Drawing.Size(124, 27);
+            this.lbltoalkcalVal.Text="0000";
 
-            this.txtprettotal=new TextBox();
-            tab2.Controls.Add(this.txtprettotal);
-            this.txtprettotal.Location = new System.Drawing.Point(186, 456);
-            this.txtprettotal.Size = new System.Drawing.Size(124, 27);
-            this.txtprettotal.Enabled=false;
+            this.lblprettotalVal=new Label();
+            tab2.Controls.Add(this.lblprettotalVal);
+            this.lblprettotalVal.Location = new System.Drawing.Point(186, 456);
+            this.lblprettotalVal.Size = new System.Drawing.Size(124, 27);
+            this.lblprettotalVal.Text="0000";
 
             this.btncomanda=new Button();
             tab2.Controls.Add(this.btncomanda);
@@ -150,8 +165,46 @@ namespace Subiect_OTI_judeteana2016
             this.btncomanda.Size = new System.Drawing.Size(159, 44);
             this.btncomanda.Text="Comanda";
 
+            this.lblnecesarzilnickcal=new Label();
+            tab3.Controls.Add(this.lblnecesarzilnickcal);
+            this.lblnecesarzilnickcal.Location = new System.Drawing.Point(20, 15);
+            this.lblnecesarzilnickcal.Size=new Size(163, 20);
+            this.lblnecesarzilnickcal.Text="Necesar zilnic de kcal";
 
+            this.lblbuget=new Label();
+            tab3.Controls.Add(this.lblbuget);
+            this.lblbuget.Location=new Point(20, 49);
+            this.lblbuget.Size=new Size(48, 20);
+            this.lblbuget.Text="Buget";
 
+            this.lblmeniurioptime=new Label();
+            tab3.Controls.Add(this.lblmeniurioptime);
+            this.lblmeniurioptime.Location=new Point(41, 103);
+            this.lblmeniurioptime.Size=new Size(310, 31);
+            this.lblmeniurioptime.Text="Meniuri optime pentru dvs:";
+            this.lblmeniurioptime.Font=new Font("Arial", 14, FontStyle.Regular);
+
+            this.txtnecesarzilnickcal=new TextBox();
+            tab3.Controls.Add(this.txtnecesarzilnickcal);
+            this.txtnecesarzilnickcal.Location=new Point(193, 12);
+            this.txtnecesarzilnickcal.Size=new Size(125, 27);
+            this.txtnecesarzilnickcal.Enabled=false;
+
+            this.txtbuget=new TextBox();
+            tab3.Controls.Add(this.txtbuget);
+            this.txtbuget.Location=new Point(193, 49);
+            this.txtbuget.Size=new Size(125, 27);
+
+            this.btngenereaza=new Button();
+            tab3.Controls.Add(this.btngenereaza);
+            this.btngenereaza.Location = new System.Drawing.Point(405, 21);
+            this.btngenereaza.Size = new System.Drawing.Size(146, 48);
+            this.btngenereaza.Text="Genereaza";
+
+            this.datagridview2=new DataGridView();
+            tab3.Controls.Add(this.datagridview2);
+            this.datagridview2.Location=new System.Drawing.Point(0, 137);
+            this.datagridview2.Size=new Size(1048, 364);
 
 
         }
@@ -169,14 +222,20 @@ namespace Subiect_OTI_judeteana2016
                 if (s<250)
                 {
                     this.txtnecesarzilnic.Text="1800";
+                    this.lblnecesarzilnic2Val.Text=this.txtnecesarzilnic.Text;
+                    this.txtnecesarzilnickcal.Text=this.txtnecesarzilnic.Text;
                 }
                 else if (s>=250&&s<=275)
                 {
                     this.txtnecesarzilnic.Text="2200";
+                    this.lblnecesarzilnic2Val.Text=this.txtnecesarzilnic.Text;
+                    this.txtnecesarzilnickcal.Text=this.txtnecesarzilnic.Text;
                 }
                 else
                 {
                     this.txtnecesarzilnic.Text="2500";
+                    this.lblnecesarzilnic2Val.Text=this.txtnecesarzilnic.Text;
+                    this.txtnecesarzilnickcal.Text=this.txtnecesarzilnic.Text;
                 }
 
             }
@@ -194,20 +253,34 @@ namespace Subiect_OTI_judeteana2016
             dt.Columns.Add("Kcal", typeof(int));
             dt.Columns.Add("Felul", typeof(int));
             dt.Columns.Add("Cantintate", typeof(int));
-            dt.Columns.Add("Adauga", typeof(string));
 
             List<Meniu> lista = this.controlMeniu.getMeniu();
 
             foreach(Meniu m in lista)
             {
-                dt.Rows.Add(m.IdProdus,m.DenumireProdus,m.Descriere,m.Pret,m.Kcal,m.Felul,1,"");
+                dt.Rows.Add(m.IdProdus,m.DenumireProdus,m.Descriere,m.Pret,m.Kcal,m.Felul,1);
             }
 
             datagridview1.DataSource = dt;
 
         }
 
+        public void genereaza_Click(object sender,EventArgs e)
+        {
 
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Felul 1", typeof(string));
+            dt.Columns.Add("Felul 2", typeof(string));
+            dt.Columns.Add("Felul 3", typeof(string));
+            dt.Columns.Add("Total kcal", typeof(int));
+            dt.Columns.Add("Pret total", typeof(int));
+
+            List<Meniu>lista=new List<Meniu>();
+
+
+
+        }
 
 
         private void Optiuni_Load(object sender, EventArgs e)

@@ -11,7 +11,7 @@ namespace Subiect_OTI_judeteana2016
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new Start());
+            Application.Run(new Optiuni());
 
 
 
