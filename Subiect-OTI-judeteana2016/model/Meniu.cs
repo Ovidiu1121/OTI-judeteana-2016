@@ -34,7 +34,7 @@ namespace Subiect_OTI_judeteana2016
         {
             string[] a = prop.Split(";");
 
-           this.idProdus=int.Parse (a[0]);
+            this.idProdus=int.Parse (a[0]);
             this.denumireProdus=a[1];
             this.descriere = a[2];
             this.pret=int.Parse(a[3]);

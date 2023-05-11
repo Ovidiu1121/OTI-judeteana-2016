@@ -1,3 +1,4 @@
+using Subiect_OTI_judeteana2016.repository;
 using System.Diagnostics;
 
 namespace Subiect_OTI_judeteana2016
@@ -10,11 +11,17 @@ namespace Subiect_OTI_judeteana2016
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Optiuni());
+            //ApplicationConfiguration.Initialize();
+            //Application.Run(new Optiuni());
 
+            SubcomandaRepository a=new SubcomandaRepository();
 
+            List<Subcomanda> b = a.getAllSubcomenzi();
 
+            foreach(Subcomanda c in b)
+            {
+                Debug.WriteLine(c.descriere());
+            }
 
         }
     }

@@ -73,7 +73,18 @@ namespace Subiect_OTI_judeteana2016
             return this.lista;
         }
 
+        public Meniu getMeniuById(int id)
+        {
 
+            for(int i = 0; i<lista.Count; i++)
+            {
+                if (this.lista[i].IdProdus.Equals(id))
+                {
+                    return lista[i];
+                }
+            }
+            return null;
+        }
 
 
 

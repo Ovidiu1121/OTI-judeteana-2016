@@ -16,5 +16,15 @@ namespace Subiect_OTI_judeteana2016
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show(dataGridView1.SelectedRows[0].ToString());
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

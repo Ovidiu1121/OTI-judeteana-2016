@@ -39,7 +39,9 @@ namespace Subiect_OTI_judeteana2016
         private TextBox txtbuget;
         private Button btngenereaza;
         private DataGridView datagridview2;
-
+        public ControlMeniu controlmeniu;
+        public int sumaprettotal = 0;
+        public int sumatotalkcal = 0;
         public Optiuni()
         {
             InitializeComponent();
@@ -113,6 +115,7 @@ namespace Subiect_OTI_judeteana2016
             tab2.Controls.Add(this.datagridview1);
             this.datagridview1.Location = new System.Drawing.Point(6, 0);
             this.datagridview1.Size=new Size(1030, 367);
+            this.datagridview1.Name="data grid view 1";
             populate();
 
             DataGridViewColumn col = this.datagridview1.Columns["Id produs"];
@@ -121,6 +124,7 @@ namespace Subiect_OTI_judeteana2016
             this.btnadauga=new DataGridViewButtonColumn();
             this.datagridview1.Columns.Add(this.btnadauga);
             this.btnadauga.Text="Adauga";
+            this.btnadauga.Name="Adauga";
             this.btnadauga.HeaderText="Adauga";
             this.btnadauga.UseColumnTextForButtonValue=true;
 
@@ -151,13 +155,13 @@ namespace Subiect_OTI_judeteana2016
             tab2.Controls.Add(this.lbltoalkcalVal);
             this.lbltoalkcalVal.Location = new System.Drawing.Point(186, 414);
             this.lbltoalkcalVal.Size = new System.Drawing.Size(124, 27);
-            this.lbltoalkcalVal.Text="0000";
+            this.lbltoalkcalVal.Text="0";
 
             this.lblprettotalVal=new Label();
             tab2.Controls.Add(this.lblprettotalVal);
             this.lblprettotalVal.Location = new System.Drawing.Point(186, 456);
             this.lblprettotalVal.Size = new System.Drawing.Size(124, 27);
-            this.lblprettotalVal.Text="0000";
+            this.lblprettotalVal.Text="0";
 
             this.btncomanda=new Button();
             tab2.Controls.Add(this.btncomanda);
@@ -206,7 +210,7 @@ namespace Subiect_OTI_judeteana2016
             this.datagridview2.Location=new System.Drawing.Point(0, 137);
             this.datagridview2.Size=new Size(1048, 364);
 
-
+            this.datagridview1.CellClick +=new DataGridViewCellEventHandler(dataGridView1_CellClick);
         }
 
         public void calculeaza_Click(object sender,EventArgs e)
@@ -254,6 +258,7 @@ namespace Subiect_OTI_judeteana2016
             dt.Columns.Add("Felul", typeof(int));
             dt.Columns.Add("Cantintate", typeof(int));
 
+
             List<Meniu> lista = this.controlMeniu.getMeniu();
 
             foreach(Meniu m in lista)
@@ -282,6 +287,23 @@ namespace Subiect_OTI_judeteana2016
 
         }
 
+        void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex != this.datagridview1.Columns["Adauga"].Index) return;
+
+            int index = int.Parse(this.datagridview1.Rows[e.RowIndex].Cells[1].Value.ToString());
+
+            controlmeniu=new ControlMeniu();
+            MessageBox.Show(index.ToString());
+            Meniu a=controlmeniu.getMeniuById(index);
+
+            sumaprettotal+=a.Pret;
+            sumatotalkcal+=a.Kcal;
+
+            this.lblprettotalVal.Text=sumaprettotal.ToString();
+            this.lbltoalkcalVal.Text=sumatotalkcal.ToString();
+
+        }
 
         private void Optiuni_Load(object sender, EventArgs e)
         {

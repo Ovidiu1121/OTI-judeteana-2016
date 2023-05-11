@@ -69,6 +69,14 @@ namespace Subiect_OTI_judeteana2016
 
         }
 
+        public void adaugare(Comanda comanda)
+        {
+
+            this.lista.Add(comanda);
+
+        }
+
+
 
 
 
